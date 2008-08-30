@@ -72,7 +72,7 @@ module Rack
         return FORBIDDEN
       end
 
-      ::Jpmobile::Model.constants.each do |career|
+      ::Jpmobile::Mobile.constants.each do |career|
         klass = Class.new(self)
         klass.class_eval do
           define_method :career do
