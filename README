@@ -3,7 +3,19 @@
 useful middlewares for rack with jpmobile.
 
 == Synopsis
-Rack::Auth::Jpmobile ( restrict access with ident_subscriber or career ip address )
++Rack::Request::Jpmobile+ ( adding mobile method to Rack::Request ).
+  require 'rack/jpmobile'
+  class YourApp
+    def call env
+      req = Rack::Request::Jpmobile.new env
+      if req.mobile?
+        # do mobile
+      else
+      end
+    end
+  end
+
++Rack::Auth::Jpmobile+ ( restrict access with ident_subscriber or career ip address )
   in your_app.ru
     require 'rack/jpmobile'
     use Rack::Auth::Jpmobile::Docomo, :ident => %w( xxxxx )
@@ -14,6 +26,20 @@ Rack::Auth::Jpmobile ( restrict access with ident_subscriber or career ip addres
         # do something ...
       end
     end
+
++Rack::Jpmobile::CombinedLogger+ ( for debugging mobie app )
+  in your_app.ru
+    require 'rack/jpmobile'
+
+    class Rack::CommonLogger
+      include Rack::Jpmobile::CommonLogger
+    end
+
+    use Rack::CommonLogger, STDERR
+
+== SEE ALSO
+
+jpmobile < http://jpmobile-rails.org/ >
 
 == Description
 
