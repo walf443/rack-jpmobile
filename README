@@ -32,7 +32,7 @@ useful middlewares for rack with jpmobile.
     require 'rack/jpmobile'
 
     class Rack::CommonLogger
-      include Rack::Jpmobile::CommonLogger
+      include Rack::Jpmobile::CombinedLogger
     end
 
     use Rack::CommonLogger, STDERR
